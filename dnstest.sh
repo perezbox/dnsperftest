@@ -30,12 +30,12 @@ DOMAINS2TEST="www.google.com amazon.com facebook.com www.youtube.com www.reddit.
 
 
 totaldomains=0
-printf "%-18s" ""
+printf "%-22s" ""
 for d in $DOMAINS2TEST; do
     totaldomains=$((totaldomains + 1))
-    printf "%-8s" "test$totaldomains"
+    printf "%-9s" "test$totaldomains"
 done
-printf "%-8s" "Average"
+    printf "%-9s" "Average"
 echo ""
 
 
@@ -54,12 +54,12 @@ for p in $NAMESERVERS $PROVIDERS; do
 	        ttime=1
 	    fi
 
-        printf "%-8s" "$ttime ms"
+        printf "%6d ms" "$ttime"
         ftime=$((ftime + ttime))
     done
     avg=`bc -lq <<< "scale=2; $ftime/$totaldomains"`
 
-    echo "  $avg"
+    printf "   %8.2f\n" "$avg"
 done
 
 
